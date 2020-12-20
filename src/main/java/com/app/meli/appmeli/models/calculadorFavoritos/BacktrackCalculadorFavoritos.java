@@ -8,6 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * We use the Recursion aprouch to resolve the problem
+ * The problem is well known as the "knapsack problem"
+ */
 public class BacktrackCalculadorFavoritos implements CalculadorFavoritosStrategy {
     private Float amount;
     private Map<String,Float> items;
@@ -24,7 +28,7 @@ public class BacktrackCalculadorFavoritos implements CalculadorFavoritosStrategy
         return max.getSelected();
     }
 
-    private BackTrackResponse backtrack(int i, BackTrackResponse backtrack/*, List<String> selected*/){
+    private BackTrackResponse backtrack(int i, BackTrackResponse backtrack){
         if(backtrack.getSum() > amount){
             return new BackTrackResponse(new ArrayList<>(),(float) 0);
         }
@@ -61,16 +65,7 @@ class BackTrackResponse{
         return selected;
     }
 
-    public void setSelected(ArrayList<String> selected) {
-        this.selected = selected;
-    }
-
     public Float getSum() {
         return sum;
     }
-
-    public void setSum(Float sum) {
-        this.sum = sum;
-    }
-
 }

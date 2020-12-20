@@ -3,8 +3,12 @@ package com.app.meli.appmeli;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.app.meli.appmeli.controllers.CouponController;
+import com.app.meli.appmeli.models.CompraMaximizada;
 import com.app.meli.appmeli.models.CouponRequest;
 import com.app.meli.appmeli.models.CouponResponse;
+import com.app.meli.appmeli.models.Item;
+import com.app.meli.appmeli.models.calculadorFavoritos.BacktrackCalculadorFavoritos;
+import com.app.meli.appmeli.models.calculadorFavoritos.DynamicProgrammingCalculadorFavoritos;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -80,5 +84,53 @@ public class CouponTest {
         expectedItems.add("MLA784757659");
 
         assertThat(couponResponse.getItems()).containsExactlyInAnyOrder("MLA882180163","MLA784757659");
+    }
+
+    @Test
+    public void verifyDynamicProgrammingApprouch(){
+        List<Item> items = new ArrayList<>();
+        Item item1 = new Item("MLA1",(float) 260);
+        Item item2 = new Item("MLA2",(float) 300);
+        Item item3 = new Item("MLA3",(float) 250);
+
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+
+        Float monto = (float) 700;
+
+        CompraMaximizada compra = new CompraMaximizada();
+        compra.setStrategy(new DynamicProgrammingCalculadorFavoritos());
+
+        List<Item> result = null;
+        try {
+            result = compra.calculate(items,monto);
+        } catch (Exception e) {}
+
+        assertThat(result).containsExactlyInAnyOrder(item1,item2);
+    }
+
+    @Test
+    public void verifyBacktrackApprouch(){
+        List<Item> items = new ArrayList<>();
+        Item item1 = new Item("MLA1",(float) 260);
+        Item item2 = new Item("MLA2",(float) 300);
+        Item item3 = new Item("MLA3",(float) 250);
+
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+
+        Float monto = (float) 700;
+
+        CompraMaximizada compra = new CompraMaximizada();
+        compra.setStrategy(new BacktrackCalculadorFavoritos());
+
+        List<Item> result = null;
+        try {
+            result = compra.calculate(items,monto);
+        } catch (Exception e) {}
+
+        assertThat(result).containsExactlyInAnyOrder(item1,item2);
     }
 }

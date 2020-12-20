@@ -3,10 +3,13 @@ package com.app.meli.appmeli.models.calculadorFavoritos;
 import com.app.meli.appmeli.models.interfaces.CalculadorFavoritosStrategy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * We use the dynamic programming aprouch to resolve the problem
+ * The problem is well known as the "knapsack problem"
+ */
 public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavoritosStrategy {
 
     @Override
@@ -23,7 +26,6 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
 
                 int currentRow = i&1;
                 int lastRow = (i-1)&1;
-
 
                 int lastValueWithoutPickItem =  i >= 1 ? result[(i-1)&1][w] : 0;
 
@@ -65,12 +67,12 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
         return selected[(size-1)&1][intAmount];
     }
 
-
+    /**
+     * Multiply the value per 100, this way, we convert a number with 2 decimals to an integer, for the algorithm purposes
+     * @param value
+     * @return value converted to integer
+     */
     public Integer convertToInteger(Float value){
         return Math.round((value * 100));
     }
-
-//    public Float convertIntegerToFloat(Integer value){
-//        return (float)value / 100;
-//    }
 }

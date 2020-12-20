@@ -2,7 +2,6 @@ package com.app.meli.appmeli.models;
 
 import com.app.meli.appmeli.models.interfaces.CalculadorFavoritosStrategy;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class CompraMaximizada {

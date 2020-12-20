@@ -1,7 +1,6 @@
 package com.app.meli.appmeli.sevices;
 
 import com.app.meli.appmeli.models.Item;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -16,9 +15,7 @@ public class ApiMeliItemService implements com.app.meli.appmeli.sevices.interfac
 
         try{
             result = restTemplate.getForObject(uri+"{id}", Item.class, id);
-        }catch (HttpClientErrorException exception){
-//            System.out.println(exception);
-        }
+        }catch (HttpClientErrorException exception){}
 
         return result;
     }

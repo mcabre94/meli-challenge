@@ -25,14 +25,6 @@ public class CouponRequest {
         return item_ids;
     }
 
-//    public void setItems(List<String> items) {
-//        this.item_ids = items;
-//    }
-//
-//    public void setAmount(Float amount) {
-//        this.amount = amount;
-//    }
-
     public Float getAmount() {
         return amount;
     }
