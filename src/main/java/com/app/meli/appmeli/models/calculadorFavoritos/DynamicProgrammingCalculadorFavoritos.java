@@ -11,14 +11,11 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
 
     @Override
     public List<String> calculate(Map<String, Float> items, Float amount) {
-        //        System.out.print(items);
         int intAmount = convertToInteger(amount);
         int size = items.size();
         int[][] result = new int[2][intAmount+1] ;
-//        StringBuilder[][] selected = new StringBuilder[2][intAmount+1];
         ArrayList<String>[][] selected = new ArrayList[2][intAmount+1];
         Object[] item_ids = items.keySet().toArray();
-//        ArrayList<String> elegidos = new ArrayList<>();
 
         for (int i = 0; i < size ; i++) {
             for (int w = 0; w <= intAmount; w++) {
@@ -64,10 +61,6 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
             }
 
         }
-//        System.out.println(result);
-//        System.out.println("\nresultado final\n");
-//        System.out.println(convertIntegerToFloat(result[(size-1)&1][intAmount]));
-//        System.out.println(selected[(size-1)&1][intAmount].toString());
 
         return selected[(size-1)&1][intAmount];
     }
@@ -77,7 +70,7 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
         return Math.round((value * 100));
     }
 
-    public Float convertIntegerToFloat(Integer value){
-        return (float)value / 100;
-    }
+//    public Float convertIntegerToFloat(Integer value){
+//        return (float)value / 100;
+//    }
 }

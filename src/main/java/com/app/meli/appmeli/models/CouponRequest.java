@@ -18,20 +18,20 @@ public class CouponRequest {
     }
 
     public String toString(){
-        return "{ items : " + item_ids + ", amount : " + amount + " }";
+        return "{ item : " + item_ids + ", amount : " + amount + " }";
     }
 
     public List<String> getItems() {
         return item_ids;
     }
 
-    public void setItems(List<String> items) {
-        this.item_ids = items;
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
+//    public void setItems(List<String> items) {
+//        this.item_ids = items;
+//    }
+//
+//    public void setAmount(Float amount) {
+//        this.amount = amount;
+//    }
 
     public Float getAmount() {
         return amount;

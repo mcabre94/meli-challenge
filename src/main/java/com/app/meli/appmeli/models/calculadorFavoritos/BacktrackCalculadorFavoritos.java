@@ -2,6 +2,8 @@ package com.app.meli.appmeli.models.calculadorFavoritos;
 
 import com.app.meli.appmeli.models.interfaces.CalculadorFavoritosStrategy;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -17,21 +19,58 @@ public class BacktrackCalculadorFavoritos implements CalculadorFavoritosStrategy
         this.items = items;
         item_ids = items.keySet().toArray();
 
-//        System.out.println(backtrack(0,(float) 0));
-//        System.out.println(convertIntegerToFloat(result[0][0]));
-        return Arrays.asList("MLA1", "MLA2");
+        BackTrackResponse max = backtrack(0,new BackTrackResponse(new ArrayList<String>(),(float) 0));
+
+        return max.getSelected();
     }
 
-    private Float backtrack(int i,Float sum){
-        if(sum > amount){
-            return (float) 0;
+    private BackTrackResponse backtrack(int i, BackTrackResponse backtrack/*, List<String> selected*/){
+        if(backtrack.getSum() > amount){
+            return new BackTrackResponse(new ArrayList<>(),(float) 0);
         }
         if(i == items.size()){
-            return sum;
+            return backtrack;
         }
 
-        Float pick = backtrack(i+1,sum + items.get(item_ids[i]));
-        Float leave = backtrack(i+1,sum );
-        return Math.max(pick,leave);
+        ArrayList pickedElements = new ArrayList(backtrack.getSelected());
+        pickedElements.add(item_ids[i].toString());
+
+        BackTrackResponse pickBacktrack = new BackTrackResponse(pickedElements,backtrack.getSum() + items.get(item_ids[i]));
+
+        BackTrackResponse pick = backtrack(i+1,pickBacktrack);
+        BackTrackResponse leave = backtrack(i+1,backtrack);
+
+        if(pick.getSum() > leave.getSum()){
+            return pick;
+        }else{
+            return leave;
+        }
     }
+}
+
+class BackTrackResponse{
+    private ArrayList<String> selected;
+    private Float sum;
+
+    public BackTrackResponse(ArrayList<String> selected, Float sum) {
+        this.selected = selected;
+        this.sum = sum;
+    }
+
+    public ArrayList<String> getSelected() {
+        return selected;
+    }
+
+    public void setSelected(ArrayList<String> selected) {
+        this.selected = selected;
+    }
+
+    public Float getSum() {
+        return sum;
+    }
+
+    public void setSum(Float sum) {
+        this.sum = sum;
+    }
+
 }
