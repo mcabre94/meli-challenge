@@ -1,12 +1,16 @@
 package com.app.meli.appmeli.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CouponResponse {
+    @JsonProperty("item_ids")
     private List<String> items;
+
     private Float total;
 
     public CouponResponse(List<Item> items){
