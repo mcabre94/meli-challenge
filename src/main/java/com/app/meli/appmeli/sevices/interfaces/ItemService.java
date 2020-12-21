@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public interface ItemService {
 
     /**
-     * Retreives an item from its id
+     * Retrieves an item from its id
      * @param id
      * @return Item
      */

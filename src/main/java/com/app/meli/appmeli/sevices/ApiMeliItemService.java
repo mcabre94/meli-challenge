@@ -10,7 +10,7 @@ public class ApiMeliItemService implements com.app.meli.appmeli.sevices.interfac
     private String uri = "https://api.mercadolibre.com/items/";
 
     /**
-     * Retreives an item from the meli-api from its id
+     * Retrieves an item from the meli-api from its id
      * @param id
      * @return Item
      */
