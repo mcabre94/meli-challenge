@@ -17,6 +17,11 @@ public class CouponController {
     @Autowired
     private ItemService itemService;
 
+    /**
+     * calculate best way to use a coupon
+     * select the best combination of items of the list that expends the maximum amount of money without exceding the amount of the coupon
+     * @param request (list of items, max amount of coupon)
+     */
     @PostMapping("/coupon")
     public CouponResponse calculateCoupon(@RequestBody CouponRequest request){
         List<Item> items = obtainItemList(request.getItems());
@@ -44,6 +49,10 @@ public class CouponController {
         return response;
     }
 
+    /**
+     * obtain the list of items from their ids
+     * @param items (list of ids of items)
+     */
     private List<Item> obtainItemList(List<String> items) {
         List<String> itemsWithoutDuplicates = new ArrayList<>(new HashSet<>(items));
 

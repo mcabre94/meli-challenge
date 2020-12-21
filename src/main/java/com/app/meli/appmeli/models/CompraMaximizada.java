@@ -11,6 +11,12 @@ public class CompraMaximizada {
         this.strategy = strategy;
     }
 
+    /**
+     * calculate best way to use a coupon
+     * select the best combination of items of the list that expends the maximum amount of money without exceding the amount of the coupon
+     * @param items
+     * @param amount
+     */
     public List<Item> calculate(List<Item> items, Float amount) throws Exception {
         Map<String,Float> map = new HashMap<String,Float>();
         for (Item i : items) map.put(i.getId(),i.getAmount());

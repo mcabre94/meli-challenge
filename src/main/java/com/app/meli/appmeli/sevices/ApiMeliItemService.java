@@ -9,6 +9,11 @@ import org.springframework.web.client.RestTemplate;
 public class ApiMeliItemService implements com.app.meli.appmeli.sevices.interfaces.ItemService {
     private String uri = "https://api.mercadolibre.com/items/";
 
+    /**
+     * Retreives an item from the meli-api from its id
+     * @param id
+     * @return Item
+     */
     public Item obtainItem(String id){
         RestTemplate restTemplate = new RestTemplate();
         Item result = null;
