@@ -1,6 +1,6 @@
 # meli-challenge
 
-## Datos de la AP
+## Datos de la API
 
 La api calcula en base a una lista de items de mercadolibre y un monto máximo del cupon, la mejor selección de productos de la lista que maximice el uso del cupón, gastando la mayor cantidad de dinero posible sin exceder el monto del cupón.
 
@@ -12,7 +12,7 @@ La api expone un endpoint para su uso:
  
   - POST -> /coupon
     - Request 
-      -  Parámetros del header
+      - Parámetros del header
           - Content-Type : application/json
       - Datos del body
         - item_ids : array con los ids de los posibles productos a seleccionar
