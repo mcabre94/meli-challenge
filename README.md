@@ -19,7 +19,7 @@ La api expone un endpoint para su uso:
         - amount : monto del cupón
     - Response
       - Body de response
-        - items : array con los ids de los productos seleccionados por la api para usar
+        - item_ids : array con los ids de los productos seleccionados por la api para usar
         - total : monto máximo resultado de la api (suma de los montos de los productos seleccionados)
         
         
