@@ -2,7 +2,7 @@
 
 ## Datos de la API
 
-La api calcula en base a una lista de items de mercadolibre y un monto máximo del cupon, la mejor selección de productos de la lista que maximice el uso del cupón, gastando la mayor cantidad de dinero posible sin exceder el monto del cupón.
+La api calcula, en base a una lista de items de mercadolibre y un monto máximo del cupon, la mejor selección de productos de la lista que maximice el uso del cupón, gastando la mayor cantidad de dinero posible sin exceder el monto del cupón.
 
  - URL de la API : http://challengemeli-env-1.eba-xmmyx3wq.us-east-2.elasticbeanstalk.com
 
