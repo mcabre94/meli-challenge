@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * We use the dynamic programming aprouch to resolve the problem
+ * We use the dynamic programming approach to resolve the problem
  * The problem is well known as the "knapsack problem"
+ * its using a space optimized version of the regular dynamic programming approach
  */
 public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavoritosStrategy {
 
@@ -16,6 +17,7 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
     public List<String> calculate(Map<String, Float> items, Float amount) {
         int intAmount = convertToInteger(amount);
         int size = items.size();
+        //its using a space optimized version of the regular dynamic programming approach (only 2 rows)
         int[][] result = new int[2][intAmount+1] ;
         ArrayList<String>[][] selected = new ArrayList[2][intAmount+1];
         Object[] item_ids = items.keySet().toArray();
@@ -68,7 +70,7 @@ public class DynamicProgrammingCalculadorFavoritos implements CalculadorFavorito
     }
 
     /**
-     * Multiply the value per 100, this way, we convert a number with 2 decimals to an integer, for the algorithm purposes
+     * Multiply the value per 100, this way, we convert a number with 2 decimals to an integer, for the dp algorithm purposes
      * @param value
      * @return value converted to integer
      */

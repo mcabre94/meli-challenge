@@ -29,11 +29,11 @@ public class CouponController {
 
         CompraMaximizada compra = new CompraMaximizada();
 
-        //si el numero de items es bajo realizamos el calculo con el metodo backtrace, ya que su complejidad solo depende de el tamaño de items, no del monto del cupon
+        //it the number of items is low, we use the backtrace method, this is becouse its complexity only depends of the number of items, and not of the coupon amount
         if(items.size() <= 20 || (items.size() <= 25 && monto > 10000)){
             compra.setStrategy(new BacktrackCalculadorFavoritos());
         }else{
-            //si el numero de items es elevado realizamos el calculo con el metodo de dynamic programming, ya que, a pesar que su complejidad aumenta tanto con el tamaño de los items como con el monto del cupon, pero, lo hace de una manera mucho mas lenta.
+            //if the number of items is high, the algorithm that is used is the dynamic programming one, this is becouse, despite his complexity depends not only of the number of items, but also of the amount of the coupon, it's grow is much slower
             compra.setStrategy(new DynamicProgrammingCalculadorFavoritos());
         }
 
